@@ -23,4 +23,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TeaStore.Core\TeaStore.Core.csproj" />
+    <ProjectReference Include="..\TeaStore.Infrastructure\TeaStore.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
