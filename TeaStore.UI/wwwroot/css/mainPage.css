@@ -35,9 +35,9 @@ header.masthead {
             transition: all 0.3s;
         }
 
-        #mainNav .navbar-nav .nav-item .nav-link {
+/*        #mainNav .navbar-nav .nav-item .nav-link {
             padding: 1.1em 1em !important;
-        }
+        }*/
 
         #mainNav.navbar-shrink {
             padding-top: 0;
@@ -70,9 +70,9 @@ header.masthead {
             transition: all 0.3s;
         }
 
-        #mainNav .navbar-nav .nav-item .nav-link {
+/*        #mainNav .navbar-nav .nav-item .nav-link {
             padding: 1.1em 1em !important;
-        }
+        }*/
 
         #mainNav.navbar-shrink {
             padding-top: 0;
