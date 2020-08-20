@@ -52,5 +52,21 @@ namespace TeaStore.UI.Areas.Admin.Controllers
             }
             return View(category);
         }
+
+        //GET - EDIT
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _categoryRepository.GetById(id ?? 0);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
     }
 }
