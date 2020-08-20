@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TeaStore.Core.Entities;
 
 namespace TeaStore.Infrastructure.Data
 {
@@ -9,5 +10,7 @@ namespace TeaStore.Infrastructure.Data
             : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
