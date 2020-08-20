@@ -138,5 +138,22 @@ namespace TeaStore.UI.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
             }
         }
+
+        //GET - DETAILS
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            { 
+                return NotFound();
+            }
+
+            var category = await _categoryRepository.GetById(id ?? 0);
+            if (category == null)
+            { 
+                return NotFound();
+            }
+
+            return View(category);
+        }
     }
 }
