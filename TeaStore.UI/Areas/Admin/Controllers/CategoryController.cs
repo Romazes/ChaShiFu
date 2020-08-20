@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TeaStore.Core.Entities;
 using TeaStore.Core.Interfaces;
 
 namespace TeaStore.UI.Areas.Admin.Controllers
@@ -21,6 +19,25 @@ namespace TeaStore.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _categoryRepository.GetAll());
+        }
+
+        //GET - CREATE
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        //POST - CREATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                await _categoryRepository.Add(category);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
         }
     }
 }
