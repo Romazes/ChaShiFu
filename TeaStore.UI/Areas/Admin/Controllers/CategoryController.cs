@@ -91,5 +91,29 @@ namespace TeaStore.UI.Areas.Admin.Controllers
             }
             return View(category);
         }
+
+        //GET - DELETE
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var category = await _categoryRepository.GetById(id ?? 0);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "Delete failed. Try again, and if the problem persists " +
+                    "see your system administrator.";
+            }
+
+            return View(category);
+        }
     }
 }
