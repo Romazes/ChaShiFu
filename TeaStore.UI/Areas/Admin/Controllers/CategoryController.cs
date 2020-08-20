@@ -68,5 +68,28 @@ namespace TeaStore.UI.Areas.Admin.Controllers
             }
             return View(category);
         }
+
+        //POST - EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("Id","Name")]Category category)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _categoryRepository.Update(category);
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists, " +
+                    "see your system administrator.");
+            }
+            return View(category);
+        }
     }
 }
