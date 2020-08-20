@@ -46,15 +46,6 @@
     $('.portfolio-modal').on('hidden.bs.modal', function(e) {
       $(".navbar").removeClass("d-none");
     })
-
-    $(window).resize(() => {
-        let b = $(window).width() < 1100;
-        if (b)
-            $("#mainNav").addClass("bg-dark");
-        else {
-            $("#mainNav").removeClass("bg-dark");
-        }
-    });
   
   })(jQuery); // End of use strict
   
