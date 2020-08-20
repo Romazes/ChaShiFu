@@ -115,5 +115,28 @@ namespace TeaStore.UI.Areas.Admin.Controllers
 
             return View(category);
         }
+
+        //POST - DELETE
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var category = await _categoryRepository.GetById(id);
+            if (category == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                await _categoryRepository.Remove(category);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.)
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+            }
+        }
     }
 }
