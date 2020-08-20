@@ -30,7 +30,7 @@ namespace TeaStore.UI.Areas.Admin.Controllers
         //POST - CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Category category)
+        public async Task<IActionResult> Create([Bind("Name")]Category category)
         {
             if (ModelState.IsValid)
             {
