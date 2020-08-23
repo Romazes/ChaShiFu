@@ -16,10 +16,11 @@ namespace TeaStore.Infrastructure.Data
             return await Context.Set<SubCategory>().Include(c => c.Category).ToListAsync();
         }
 
-        public async Task<IEnumerable<SubCategory>> GetAllOrderedUnique()
+        public async Task<List<string>> GetAllListOrderedUnique()
         {
-            return (IEnumerable<SubCategory>)await Context.Set<SubCategory>().OrderBy(n => n.Name)
-                    .Select(n => n.Name).Distinct().ToListAsync();
+            return await Context.Set<SubCategory>().OrderBy(n => n.Name).Select(n => n.Name)
+                .Distinct().ToListAsync();
+                //.OrderBy(n => n.Name).Select(n => n.Name).Distinct().ToListAsync();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace TeaStore.UI.Extensions
 {
     public static class IEnumerableExtension
     {
-        public static IEnumerable<SelectListItem> ToSelectListItem<T>(this IEnumerable<T> items, int selectedValue)
+        public static IEnumerable<SelectListItem> ToSelectListItem<T>(this IEnumerable<T> items, int? selectedValue)
         {
             return from item in items
                    select new SelectListItem

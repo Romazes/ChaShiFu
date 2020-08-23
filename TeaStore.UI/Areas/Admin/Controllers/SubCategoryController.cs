@@ -34,7 +34,7 @@ namespace TeaStore.UI.Areas.Admin.Controllers
             {
                 CategoryList = await _categoryRepository.GetAll(),
                 SubCategory = new SubCategory(),
-                SubCategoryList = (List<string>)await _subCategoryRepository.GetAllOrderedUnique()
+                SubCategoryList = await _subCategoryRepository.GetAllListOrderedUnique()
             };
 
             return View(model);
