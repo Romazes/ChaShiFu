@@ -21,7 +21,7 @@ namespace TeaStore.Infrastructure.Data
 
         #region Public Methods
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
             return await Context.Set<T>().ToListAsync();
         }

@@ -1,4 +1,7 @@
-﻿using TeaStore.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using TeaStore.Core.Entities;
 using TeaStore.Core.Interfaces;
 
 namespace TeaStore.Infrastructure.Data
@@ -6,5 +9,10 @@ namespace TeaStore.Infrastructure.Data
     public class SubCategoryRepository : EfRepository<SubCategory>, ISubCategoryRepository
     {
         public SubCategoryRepository(ApplicationDbContext context) : base(context) { }
+
+        public override async Task<IEnumerable<SubCategory>> GetAll()
+        {
+            return await Context.Set<SubCategory>().Include(c => c.Category).ToListAsync();
+        }
     }
 }
