@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using TeaStore.Core.Entities;
@@ -9,6 +10,8 @@ namespace TeaStore.Infrastructure.Data
 {
     public class SubCategoryRepository : EfRepository<SubCategory>, ISubCategoryRepository
     {
+        SubCategory sb = new SubCategory();
+
         public SubCategoryRepository(ApplicationDbContext context) : base(context) { }
 
         public override async Task<IEnumerable<SubCategory>> GetAll()
@@ -16,11 +19,10 @@ namespace TeaStore.Infrastructure.Data
             return await Context.Set<SubCategory>().Include(c => c.Category).ToListAsync();
         }
 
-        public async Task<List<string>> GetAllListOrderedUnique()
+        public async Task<List<string>> GetAllListUniqueOrderBy()
         {
             return await Context.Set<SubCategory>().OrderBy(n => n.Name).Select(n => n.Name)
                 .Distinct().ToListAsync();
-                //.OrderBy(n => n.Name).Select(n => n.Name).Distinct().ToListAsync();
         }
     }
 }
