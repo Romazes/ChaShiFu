@@ -18,7 +18,7 @@ namespace TeaStore.UI.Areas.Admin.Controllers
         [TempData]
         public string StatusMessage { get; set; }
 
-        public SubCategoryController(ISubCategoryRepository subCategoryRepository, 
+        public SubCategoryController(ISubCategoryRepository subCategoryRepository,
                                      ICategoryRepository categoryRepository)
         {
             _subCategoryRepository = subCategoryRepository;
@@ -53,7 +53,7 @@ namespace TeaStore.UI.Areas.Admin.Controllers
             {
                 var doesSubCategoryExists = _subCategoryRepository.GetAll().Result
                     .Where(n => n.Name == model.SubCategory.Name && n.Category.Id == model.SubCategory.CategoryId);
-                
+
                 if (doesSubCategoryExists.Count() > 0)
                 {
                     //Error
@@ -72,10 +72,19 @@ namespace TeaStore.UI.Areas.Admin.Controllers
                 SubCategory = new SubCategory(),
                 SubCategoryList = await _subCategoryRepository.GetAllListUniqueOrderBy(),
                 StatusMessage = StatusMessage
-            }; 
+            };
 
             return View(modelVM);
         }
 
+        //GET - ALL SUBCATEGORY FOR CURRENT CATEGORY
+        [ActionName("GetSubCategory")]
+        public async Task<IActionResult> GetSubCategory(int id)
+        {
+            //List<SubCategory> subCategories = new List<SubCategory>();
+
+            var subCategories = _subCategoryRepository.GetAll().Result.Where(n => n.CategoryId == id);
+            return Json(new SelectList(subCategories, "Id", "Name"));
+        }
     }
 }
