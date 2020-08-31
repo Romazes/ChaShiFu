@@ -57,8 +57,8 @@ namespace TeaStore.UI.Areas.Admin.Controllers
                 if (doesSubCategoryExists.Count() > 0)
                 {
                     //Error
-                    StatusMessage = "Error : Sub Category exists under " + doesSubCategoryExists.First().Category.Name
-                        + " category. Please use another name.";
+                    StatusMessage = "Error : Данная под-категория уже существует для " + doesSubCategoryExists.First().Category.Name
+                        + ". Пожалуйста измените название под-категории.";
                 }
                 else
                 {
