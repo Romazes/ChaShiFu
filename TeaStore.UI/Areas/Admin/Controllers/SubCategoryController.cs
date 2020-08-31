@@ -131,6 +131,7 @@ namespace TeaStore.UI.Areas.Admin.Controllers
                 {
                     var subCategoryFromDb = await _subCategoryRepository.GetById(model.SubCategory.Id);
                     subCategoryFromDb.Name = model.SubCategory.Name;
+                    await _subCategoryRepository.Update(subCategoryFromDb);
                     return RedirectToAction(nameof(Index));
                 }
             }
