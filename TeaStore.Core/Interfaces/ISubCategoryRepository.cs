@@ -7,5 +7,6 @@ namespace TeaStore.Core.Interfaces
     public interface ISubCategoryRepository : IAsyncRepository<SubCategory>
     {
         Task<List<string>> GetAllListUniqueOrderBy();
+        Task<SubCategory> GetByCategoryId(int id);
     }
 }

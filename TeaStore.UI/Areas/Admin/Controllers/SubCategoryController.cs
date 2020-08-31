@@ -145,5 +145,45 @@ namespace TeaStore.UI.Areas.Admin.Controllers
 
             return View(modelVM);
         }
+
+        //GET - DETAILS
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var subCategory = await _subCategoryRepository.GetByCategoryId(id ?? 0);
+
+            if (subCategory == null)
+                return NotFound();
+
+            return View(subCategory);
+        }
+
+        //GET - DELETE
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var subCategory = await _subCategoryRepository.GetByCategoryId(id ?? 0);
+
+            if (subCategory == null)
+                return NotFound();
+
+            return View(subCategory);
+        }
+
+        //POST - DELETE
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            var subCategory = await _subCategoryRepository.GetByCategoryId(id ?? 0);
+
+            await _subCategoryRepository.Remove(subCategory);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

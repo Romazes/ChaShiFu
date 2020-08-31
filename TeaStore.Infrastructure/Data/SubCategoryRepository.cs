@@ -24,5 +24,11 @@ namespace TeaStore.Infrastructure.Data
             return await Context.Set<SubCategory>().OrderBy(n => n.Name).Select(n => n.Name)
                 .Distinct().ToListAsync();
         }
+
+        //public ValueTask<T> GetById(int id) => Context.Set<T>().FindAsync(id);
+        public async Task<SubCategory> GetByCategoryId(int id)
+        {
+             return await Context.Set<SubCategory>().Include(c => c.Category).SingleOrDefaultAsync(i => i.Id == id);
+        }
     }
 }
