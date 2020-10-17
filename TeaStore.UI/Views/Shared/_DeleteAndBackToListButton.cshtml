@@ -1,10 +1,28 @@
 ﻿@model int
-<div class="row">
-    <div class="col-6">
-        <input type="submit" class="btn btn-danger form-control" asp-route-id="@Model"
-               value="Удалить" />
+    <div class="row">
+        <div class="col-6">
+            <input type="submit" class="btn btn-danger form-control" asp-route-id="@Model"
+                   value="Удалить" />
+        </div>
+        <div class="modal fade" id="@Model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this item?
+                    </div>
+                    <div class="modal-footer">
+                        <a asp-page-handler="Delete" asp-route-Id="@Model" id="deleteBtn" class="btn bg-danger mr-1">Delete</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <a asp-action="Index" class="btn btn-success form-control">Обратно к списку</a>
+        </div>
     </div>
-    <div class="col-6">
-        <a asp-action="Index" class="btn btn-success form-control">Обратно к списку</a>
-    </div>
-</div>
