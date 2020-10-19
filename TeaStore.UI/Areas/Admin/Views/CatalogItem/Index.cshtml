@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Category>
+﻿@model IEnumerable<CatalogItem>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
 <div class="border bg-light">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-info">Категории</h2>
+            <h2 class="text-info">Каталог чая</h2>
         </div>
         <div class="col-6 text-right">
             <partial name="_CreateButtonPartial" />
@@ -24,6 +24,15 @@
                     <th>
                         @Html.DisplayNameFor(n => n.Name)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(n => n.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(n => n.CategoryId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(n => n.SubCategoryId)
+                    </th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -34,6 +43,15 @@
                             @Html.DisplayFor(n => item.Name)
                         </td>
                         <td>
+                            @Html.DisplayFor(n => item.Price.ToString("C2"))
+                        </td>
+                        <td>
+                            @Html.DisplayFor(n => item.Category.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(n => item.SubCategory.Name)
+                        </td>
+                        <td>
                             <partial name="_TableButtonPartial" model="item.Id" />
                         </td>
                     </tr>
@@ -42,7 +60,7 @@
         }
         else
         {
-            <p>Вы еще не добавили ни одной категории... <i class="far fa-frown-open"></i></p>
+            <p>Вы еще не добавили ни одной позиции чая... <i class="far fa-frown-open"></i></p>
         }
     </div>
 </div>
