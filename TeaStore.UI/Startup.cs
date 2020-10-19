@@ -40,6 +40,8 @@ namespace TeaStore.UI
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
             services.AddScoped<IWeightRepository, WeightRepository>();
+            services.AddScoped<ICatalogItemRepository, CatalogItemRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
