@@ -2,7 +2,7 @@
 
 namespace TeaStore.Core.Interfaces
 {
-    public interface ICategoryRepository : IAsyncRepository<Category>
+    public interface IWeightRepository : IAsyncRepository<Weight>
     {
     }
 }

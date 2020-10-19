@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TeaStore.Core.Entities;
+﻿using TeaStore.Core.Entities;
 using TeaStore.Core.Interfaces;
 
 namespace TeaStore.Infrastructure.Data

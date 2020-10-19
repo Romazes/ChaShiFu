@@ -12,9 +12,6 @@ namespace TeaStore.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Weight> builder)
         {
-
-
-
         }
     }
 }
